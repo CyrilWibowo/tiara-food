@@ -1,5 +1,13 @@
 import "./Landing.css"
 import image1 from "../assets/image-1.jpg"
+import image2 from "../assets/image-2.png"
+import image3 from "../assets/image-3.jpg"
+import image4 from "../assets/image-4.jpg"
+import image5 from "../assets/image-5.jpg"
+import image6 from "../assets/image-6.jpg"
+import image7 from "../assets/image-7.jpg"
+import image8 from "../assets/image-8.jpg"
+import image9 from "../assets/image-9.jpg"
 
 const Landing = () => {
 
@@ -10,10 +18,10 @@ const Landing = () => {
 
   window.onmousemove = e => {
     const track = document.getElementById("image-track");
-    if(track.dataset.mouseDownAt === "0") return;
+    if (track.dataset.mouseDownAt === "0") return;
 
     const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX;
-    const maxDelta = window.innerWidth;
+    const maxDelta = window.innerWidth / 2;
 
     const percentage = (mouseDelta / maxDelta) * -100;
     let nextPercentage = (parseFloat(track.dataset.prevPercentage) || 0) + percentage;
@@ -22,7 +30,9 @@ const Landing = () => {
     nextPercentage = Math.max(-45, nextPercentage);
 
     track.dataset.percentage = nextPercentage;
-    track.style.transform = `translate(calc(-50% + ${nextPercentage}%), -50%)`
+    track.animate({
+      transform: `translate(calc(-50% + ${nextPercentage}%), -50%)`
+    }, { duration: 2400, fill: "forwards" });
   }
 
   window.onmouseup = () => {
@@ -38,28 +48,44 @@ const Landing = () => {
         <div className="track-column-left">
           <div className="left-up">
             <div className="card card-1">
-              <img src={image1} alt="Card 1" />
+              <img src={image1} alt="Card 1" draggable="false" />
             </div>
-            <div className="card card-2"></div>
+            <div className="card card-2">
+              <img src={image2} alt="Card 2" draggable="false" />
+            </div>
           </div>
           <div className="left-down">
-            <div className="card card-7"></div>
-            <div className="card card-8"></div>
+            <div className="card card-7">
+              <img src={image7} alt="Card 7" draggable="false" />
+            </div>
+            <div className="card card-8">
+              <img src={image8} alt="Card 8" draggable="false" />
+            </div>
           </div>
         </div>
         <div className="middle-square">
-          <div className="card card-5"></div>
+          <div className="card card-5">
+            <img src={image5} alt="Card 5" draggable="false" />
+          </div>
         </div>
         <div className="track-column-right-1">
-          <div className="card card-6"></div>
+          <div className="card card-6">
+            <img src={image6} alt="Card 6" draggable="false" />
+          </div>
         </div>
         <div className="track-column-right-2">
           <div className="right-up">
-            <div className="card card-3"></div>
-            <div className="card card-4"></div>
+            <div className="card card-3">
+              <img src={image3} alt="Card 3" draggable="false" />
+            </div>
+            <div className="card card-4">
+              <img src={image4} alt="Card 4" draggable="false" />
+            </div>
           </div>
           <div className="right-down">
-            <div className="card card-9"></div>
+            <div className="card card-9">
+              <img src={image9} alt="Card 9" draggable="false" />
+            </div>
           </div>
         </div>
       </div>

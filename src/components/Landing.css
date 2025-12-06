@@ -55,6 +55,16 @@
   transform: translate(-46%, -50%);
 }
 
+.image {
+  object-position: 4.4% center;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  object-fit: cover;
+  object-position: 50% center;
+}
+
 /* Left column */
 .track-column-left {
   display: flex;

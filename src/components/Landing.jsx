@@ -25,7 +25,6 @@ const Landing = () => {
 
     const percentage = (mouseDelta / maxDelta) * -100;
     let nextPercentage = (parseFloat(track.dataset.prevPercentage) || 0) + percentage;
-    console.log(nextPercentage)
     nextPercentage = Math.min(45, nextPercentage);
     nextPercentage = Math.max(-45, nextPercentage);
 
@@ -33,6 +32,18 @@ const Landing = () => {
     track.animate({
       transform: `translate(calc(-50% + ${nextPercentage}%), -50%)`
     }, { duration: 2400, fill: "forwards" });
+
+    const dots = document.querySelectorAll(".scroll-indicator .dot");
+    const activeIndex = 4 - Math.round(((nextPercentage + 45) / 90) * 4);
+    dots.forEach((dot, i) => {
+      if (i === activeIndex) {
+        dot.textContent = "✦";
+        dot.classList.add("active");
+      } else {
+        dot.textContent = "•";
+        dot.classList.remove("active");
+      }
+    });
   }
 
   window.onmouseup = () => {
@@ -43,7 +54,19 @@ const Landing = () => {
 
   return (
     <div className="Landing">
+      <nav className="nav">
+        <span className="nav-link active">Gallery</span>
+        <span className="nav-link">About Us</span>
+        <span className="nav-link">Contact</span>
+      </nav>
       <div className="crosshair"></div>
+      <div className="scroll-indicator" id="scroll-indicator">
+        <span className="dot">•</span>
+        <span className="dot">•</span>
+        <span className="dot active">✦</span>
+        <span className="dot">•</span>
+        <span className="dot">•</span>
+      </div>
       <div className="image-track" id="image-track" data-mouse-down-at="0" data-prev-percentage="4" data-percentage="4">
         <div className="track-column-left">
           <div className="left-up">

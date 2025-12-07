@@ -201,7 +201,7 @@ const Landing = () => {
               We are a Perth-based Australian company dedicated to providing premium, locally-made
               tempeh using exclusively Australian <span className="non-gmo">non-GMO</span> soybeans.
               Our mission is to bring the exceptional nutritional benefits of <span className="tempeh">Tempeh</span> and
-              share this superfood with Australia.
+              share this superfood with the whole of Australia.
             </div>
           </div>
         </div>

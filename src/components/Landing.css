@@ -74,9 +74,6 @@
   gap: 4vmin;
 }
 
-.right-down {
-}
-
 /* Card styles */
 .card {
   background-color: gray;
@@ -223,7 +220,3 @@
   height: 1rem;
   transition: transform 0.3s ease;
 }
-
-.dot.active {
-}
-

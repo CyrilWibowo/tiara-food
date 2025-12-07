@@ -139,7 +139,89 @@ const Landing = () => {
       {/* About Section */}
       <section className="page-section" id="about" style={getSectionStyle(1)}>
         <div className="section-content">
-          <h1>About Us</h1>
+          <div className="stockists">
+            <div className="stockist-about">Available at 17 Perth Locations:</div>
+            <div className="stockist-columns">
+              <div className="stockist-column">
+                <div className="stockist">
+                  <div className="stockist-name">Lucky Import & Export Co Pty Ltd</div>
+                  <div className="stockist-address">112-118 Brisbane St, Perth, WA 6000</div>
+                </div>
+                <div className="stockist">
+                  <div className="stockist-name">Med Halal & Honeywell Meats</div>
+                  <div className="stockist-address">73 Honeywell Blvd, Mirrabooka, WA 6061</div>
+                </div>
+                <div className="stockist">
+                  <div className="stockist-name">San Fatt Trading</div>
+                  <div className="stockist-address">200 Spencer Rd, Thronlie, WA 6108</div>
+                </div>
+                <div className="stockist">
+                  <div className="stockist-name">Market City Gourmet Food</div>
+                  <div className="stockist-address">Shop 4, 280 Bannister, Canning Vale, WA 6155</div>
+                </div>
+                <div className="stockist">
+                  <div className="stockist-name">NP Carousel Supermarket</div>
+                  <div className="stockist-address">45 Cecil Avenue, Cannington, WA 6170</div>
+                </div>
+                <div className="stockist">
+                  <div className="stockist-name">NP Oriental Supermarket</div>
+                  <div className="stockist-address">161 Altone Rd, Beechboro, WA 6063</div>
+                </div>
+                <div className="stockist">
+                  <div className="stockist-name">NP Oriental Supermarket</div>
+                  <div className="stockist-address">3 Wade Ct, Girrawheen, WA 6064</div>
+                </div>
+                <div className="stockist">
+                  <div className="stockist-name">Kai Supermarket</div>
+                  <div className="stockist-address">15b/342 Albany Hyw, Victoria Park, WA 6100</div>
+                </div>
+                <div className="stockist">
+                  <div className="stockist-name">MCQ Beechboro</div>
+                  <div className="stockist-address">Shop 17/412 Beechboro Rd, Morely, WA, 6062</div>
+                </div>
+              </div>
+              <div className="stockist-column">
+                <div className="stockist">
+                  <div className="stockist-name">Yee Sheng Oriental Supermarket</div>
+                  <div className="stockist-address">36 Hulme Court, Myaree, WA 6154</div>
+                </div>
+                <div className="stockist">
+                  <div className="stockist-name">The Corner Store</div>
+                  <div className="stockist-address">235 Bussel Hyw, West Busselton, WA 6280</div>
+                </div>
+                <div className="stockist">
+                  <div className="stockist-name">Golden Choice Frest Market</div>
+                  <div className="stockist-address">369 Roberts Rd, Subiaco, WA 6008</div>
+                </div>
+                <div className="stockist">
+                  <div className="stockist-name">OK Oriental Mini Mart</div>
+                  <div className="stockist-address">47 Davidson Terrace, Joondalup, WA 6027</div>
+                </div>
+                <div className="stockist">
+                  <div className="stockist-name">MCQ Conventry Village</div>
+                  <div className="stockist-address">243-253 Walter Rd, Morely, WA 6062</div>
+                </div>
+                <div className="stockist">
+                  <div className="stockist-name">Kongs</div>
+                  <div className="stockist-address">784 Albany Hyw, East Victoria Park, WA 6101</div>
+                </div>
+                <div className="stockist">
+                  <div className="stockist-name">Chan Bros Import & Export</div>
+                  <div className="stockist-address">183 High Road, Willetton, WA 6155</div>
+                </div>
+                <div className="stockist">
+                  <div className="stockist-name">Fremantle Mini-Mart</div>
+                  <div className="stockist-address">Shop 5, 29 Cantonment St, Fremantle, WA 6160</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="about-us">
+            We are a Perth-based Australian company dedicated to crafting premium, locally-made
+            tempeh using exclusively Australian non-GMO soybeans. Our mission is to bring the
+            exceptional nutritional benefits of <span className="tempeh">Tempeh</span> to
+            Australian tables and share this superfood with the world.
+          </div>
         </div>
       </section>
 

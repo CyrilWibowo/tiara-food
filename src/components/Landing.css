@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Playwrite NO';
+  src: url('../assets/Playwrite_NO/PlaywriteNO-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 400;
+  font-style: normal;
+}
+
 /* Page container - holds all sections */
 .page-container {
   height: 100vh;
@@ -230,18 +237,24 @@
   align-items: center;
   height: 100%;
   gap: 4rem;
-  padding-left: 20vh;
-  padding-right: 20vh;
+  padding-left: 25vh;
+  padding-right: 27vh;
   box-sizing: border-box;
+}
+
+.about-us-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  flex: 1;
 }
 
 .about-us {
   color: white;
   font-size: 1.5rem;
-  text-align: left;
+  text-align: center;
   line-height: 1.6;
-  flex: 1;
-  text-align: left;
 }
 
 .stockists {
@@ -265,17 +278,28 @@
 
 .stockist-about {
   color: white;
-  font-size: 1.5rem;
+  font-size: 1rem;
   margin-bottom: 1rem;
 }
 
-.stockist {
+a.stockist {
   text-align: left;
+  text-decoration: none;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+a.stockist:hover {
+  transform: translateX(5px);
+}
+
+a.stockist:hover .stockist-name {
+  color: rgb(252, 180, 73);
 }
 
 .stockist-name {
   color: white;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 
 .stockist-address {
@@ -284,16 +308,21 @@
 }
 
 .tempeh {
-  font-family: cursive;
-  font-weight: bolder;
+  font-family: 'Playwrite NO', cursive;
+  font-weight: 400;
   font-size: 1.9rem;
   color: rgb(252, 180, 73);
 }
 
 .non-gmo {
-  font-family: cursive;
-  font-weight: bold;
+  font-family: 'Playwrite NO', cursive;
+  font-weight: 400;
   color: rgb(98, 255, 98);
+}
+
+.juragan-tempe-logo {
+  max-height: 150px;
+  object-fit: contain;
 }
 
 /* Contact Section */

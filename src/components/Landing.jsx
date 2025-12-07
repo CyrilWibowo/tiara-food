@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import "./Landing.css"
 import NavOverlay from "./NavOverlay"
 import image1 from "../assets/image-1.jpg"
@@ -14,11 +14,59 @@ import phoneLogo from "../assets/phone-logo.png"
 import emailLogo from "../assets/email-logo.webp"
 import facebookLogo from "../assets/facebook-logo.png"
 import instagramLogo from "../assets/instagram-logo.png"
+import juraganTempeLogo from "../assets/juragan-tempe-logo.png"
 
 const sections = ["home", "about", "contact"]
 
+const stockists = [
+  { name: "Lucky Import & Export Co Pty Ltd", address: "112-118 Brisbane St, Perth, WA 6000" },
+  { name: "Med Halal & Honeywell Meats", address: "73 Honeywell Bvd, Mirrabooka, WA 6061" },
+  { name: "San Fatt Trading", address: "200 Spencer Rd, Thornlie, WA 6108" },
+  { name: "Market City Gourmet Food", address: "Shop 4, 280 Bannister, Canning Vale, WA 6155" },
+  { name: "NP Carousel Supermarket", address: "45 Cecil Avenue, Cannington, WA 6170" },
+  { name: "NP Oriental Supermarket", address: "161 Altone Rd, Beechboro, WA 6063" },
+  { name: "NP Oriental Supermarket", address: "3 Wade Ct, Girrawheen, WA 6064" },
+  { name: "Kai Supermarket", address: "15b/342 Albany Hwy, Victoria Park, WA 6100" },
+  { name: "MCQ Beechboro", address: "Shop 17/412 Beechboro Rd, Morley, WA, 6062" },
+  { name: "Yee Seng Oriental Supermarket", address: "36 Hulme Court, Myaree, WA 6154" },
+  { name: "The Corner Store", address: "235 Bussell Hwy, West Busselton, WA 6280" },
+  { name: "Golden Choice Fresh Market", address: "369 Roberts Rd, Subiaco, WA 6008" },
+  { name: "OK Oriental Mini Mart", address: "47 Davidson Terrace, Joondalup, WA 6027" },
+  { name: "MCQ Coventry Village", address: "243-253 Walter Rd, Morley, WA 6062" },
+  { name: "Kongs", address: "784 Albany Hwy, East Victoria Park, WA 6101" },
+  { name: "Chan Brothers Import & Export", address: "183 High Road, Willetton, WA 6155" },
+  { name: "Fremantle Mini-Mart", address: "Shop 5, 29 Cantonment St, Fremantle, WA 6160" },
+]
+
+const getGoogleSearchUrl = (name, address) => {
+  const query = encodeURIComponent(`${name} ${address}`)
+  return `https://www.google.com/search?q=${query}`
+}
+
 const Landing = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const isScrolling = useRef(false)
+
+  useEffect(() => {
+    const handleWheel = (e) => {
+      if (isScrolling.current) return
+
+      if (e.deltaY > 0 && currentIndex < sections.length - 1) {
+        // Scroll down - go to next section
+        isScrolling.current = true
+        setCurrentIndex(prev => prev + 1)
+        setTimeout(() => { isScrolling.current = false }, 800)
+      } else if (e.deltaY < 0 && currentIndex > 0) {
+        // Scroll up - go to previous section
+        isScrolling.current = true
+        setCurrentIndex(prev => prev - 1)
+        setTimeout(() => { isScrolling.current = false }, 800)
+      }
+    }
+
+    window.addEventListener("wheel", handleWheel, { passive: true })
+    return () => window.removeEventListener("wheel", handleWheel)
+  }, [currentIndex])
 
   const navigateTo = (sectionId) => {
     const newIndex = sections.indexOf(sectionId)
@@ -147,84 +195,43 @@ const Landing = () => {
             <div className="stockist-about">Available at 17 Perth Locations:</div>
             <div className="stockist-columns">
               <div className="stockist-column">
-                <div className="stockist">
-                  <div className="stockist-name">Lucky Import & Export Co Pty Ltd</div>
-                  <div className="stockist-address">112-118 Brisbane St, Perth, WA 6000</div>
-                </div>
-                <div className="stockist">
-                  <div className="stockist-name">Med Halal & Honeywell Meats</div>
-                  <div className="stockist-address">73 Honeywell Blvd, Mirrabooka, WA 6061</div>
-                </div>
-                <div className="stockist">
-                  <div className="stockist-name">San Fatt Trading</div>
-                  <div className="stockist-address">200 Spencer Rd, Thronlie, WA 6108</div>
-                </div>
-                <div className="stockist">
-                  <div className="stockist-name">Market City Gourmet Food</div>
-                  <div className="stockist-address">Shop 4, 280 Bannister, Canning Vale, WA 6155</div>
-                </div>
-                <div className="stockist">
-                  <div className="stockist-name">NP Carousel Supermarket</div>
-                  <div className="stockist-address">45 Cecil Avenue, Cannington, WA 6170</div>
-                </div>
-                <div className="stockist">
-                  <div className="stockist-name">NP Oriental Supermarket</div>
-                  <div className="stockist-address">161 Altone Rd, Beechboro, WA 6063</div>
-                </div>
-                <div className="stockist">
-                  <div className="stockist-name">NP Oriental Supermarket</div>
-                  <div className="stockist-address">3 Wade Ct, Girrawheen, WA 6064</div>
-                </div>
-                <div className="stockist">
-                  <div className="stockist-name">Kai Supermarket</div>
-                  <div className="stockist-address">15b/342 Albany Hyw, Victoria Park, WA 6100</div>
-                </div>
-                <div className="stockist">
-                  <div className="stockist-name">MCQ Beechboro</div>
-                  <div className="stockist-address">Shop 17/412 Beechboro Rd, Morely, WA, 6062</div>
-                </div>
+                {stockists.slice(0, 9).map((stockist, index) => (
+                  <a
+                    key={index}
+                    href={getGoogleSearchUrl(stockist.name, stockist.address)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="stockist"
+                  >
+                    <div className="stockist-name">{stockist.name}</div>
+                    <div className="stockist-address">{stockist.address}</div>
+                  </a>
+                ))}
               </div>
               <div className="stockist-column">
-                <div className="stockist">
-                  <div className="stockist-name">Yee Sheng Oriental Supermarket</div>
-                  <div className="stockist-address">36 Hulme Court, Myaree, WA 6154</div>
-                </div>
-                <div className="stockist">
-                  <div className="stockist-name">The Corner Store</div>
-                  <div className="stockist-address">235 Bussel Hyw, West Busselton, WA 6280</div>
-                </div>
-                <div className="stockist">
-                  <div className="stockist-name">Golden Choice Frest Market</div>
-                  <div className="stockist-address">369 Roberts Rd, Subiaco, WA 6008</div>
-                </div>
-                <div className="stockist">
-                  <div className="stockist-name">OK Oriental Mini Mart</div>
-                  <div className="stockist-address">47 Davidson Terrace, Joondalup, WA 6027</div>
-                </div>
-                <div className="stockist">
-                  <div className="stockist-name">MCQ Conventry Village</div>
-                  <div className="stockist-address">243-253 Walter Rd, Morely, WA 6062</div>
-                </div>
-                <div className="stockist">
-                  <div className="stockist-name">Kongs</div>
-                  <div className="stockist-address">784 Albany Hyw, East Victoria Park, WA 6101</div>
-                </div>
-                <div className="stockist">
-                  <div className="stockist-name">Chan Bros Import & Export</div>
-                  <div className="stockist-address">183 High Road, Willetton, WA 6155</div>
-                </div>
-                <div className="stockist">
-                  <div className="stockist-name">Fremantle Mini-Mart</div>
-                  <div className="stockist-address">Shop 5, 29 Cantonment St, Fremantle, WA 6160</div>
-                </div>
+                {stockists.slice(9).map((stockist, index) => (
+                  <a
+                    key={index + 9}
+                    href={getGoogleSearchUrl(stockist.name, stockist.address)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="stockist"
+                  >
+                    <div className="stockist-name">{stockist.name}</div>
+                    <div className="stockist-address">{stockist.address}</div>
+                  </a>
+                ))}
               </div>
             </div>
           </div>
-          <div className="about-us">
-            We are a Perth-based Australian company dedicated to crafting premium, locally-made
-            tempeh using exclusively Australian <span className="non-gmo">non-GMO</span> soybeans.
-            Our mission is to bring the exceptional nutritional benefits of <span className="tempeh">Tempeh</span> to
-            Australian tables and share this superfood with the world.
+          <div className="about-us-container">
+            <img src={juraganTempeLogo} alt="Juragan Tempe Logo" className="juragan-tempe-logo" />
+            <div className="about-us">
+              We are a Perth-based Australian company dedicated to providing premium, locally-made
+              tempeh using exclusively Australian <span className="non-gmo">non-GMO</span> soybeans.
+              Our mission is to bring the exceptional nutritional benefits of <span className="tempeh">Tempeh</span> and
+              share this superfood with Australia.
+            </div>
           </div>
         </div>
       </section>
@@ -255,14 +262,14 @@ const Landing = () => {
               <img src={emailLogo} alt="Email" className="social-logo" />
               <span>info@tiarafood.com.au</span>
             </div>
-            <div className="social-item">
+            <a href="https://www.facebook.com/juragantempeaustralia/" target="_blank" rel="noopener noreferrer" className="social-item">
               <img src={facebookLogo} alt="Facebook" className="social-logo" />
               <span>@juragantempeaustralia</span>
-            </div>
-            <div className="social-item">
+            </a>
+            <a href="https://www.instagram.com/juragantempeaustralia/" target="_blank" rel="noopener noreferrer" className="social-item">
               <img src={instagramLogo} alt="Instagram" className="social-logo" />
               <span>@juragantempeaustralia</span>
-            </div>
+            </a>
           </div>
         </div>
       </section>

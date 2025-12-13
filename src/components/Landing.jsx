@@ -192,16 +192,28 @@ const Landing = () => {
       {/* About Section */}
       <section className="page-section" id="about" style={getSectionStyle(1)}>
         <div className="section-content">
-          <div className="about-image-container">
-            <img src={aboutUsImage} alt="About Us" className="about-us-image" />
-          </div>
-          <div className="about-us-container">
-            <img src={juraganTempeLogo} alt="Juragan Tempe Logo" className="juragan-tempe-logo" />
-            <div className="about-us">
-              We are a Perth-based Australian company dedicated to providing premium, locally-made
-              tempeh using exclusively Australian <span className="non-gmo">non-GMO</span> soybeans.
-              Our mission is to bring the exceptional nutritional benefits of <span className="tempeh">Tempeh</span> and
-              share this superfood with the whole of Australia.
+          <div className="about-cards-container">
+            {/* About Us Card */}
+            <div className="about-card">
+              <div className="about-card-text">
+                <h2 className="about-card-title">About Us</h2>
+                <p className="about-card-description">
+                  We are a Perth-based Australian company dedicated to providing premium, locally-made tempeh using exclusively Australian <span className="non-gmo">non-GMO</span> soybeans.
+                </p>
+              </div>
+              <div className="about-card-image-container logo-container">
+                <img src={juraganTempeLogo} alt="Juragan Tempe Logo" className="about-card-image logo-image" />
+              </div>
+            </div>
+
+            {/* Our Mission Card */}
+            <div className="about-card mission-card text-only">
+              <div className="about-card-text centered">
+                <h2 className="about-card-title">Our Mission</h2>
+                <p className="about-card-description">
+                  Our mission is to bring the exceptional nutritional benefits of <span className="tempeh">Tempeh</span> and share this superfood with the whole of Australia and the rest of the world.
+                </p>
+              </div>
             </div>
           </div>
         </div>
